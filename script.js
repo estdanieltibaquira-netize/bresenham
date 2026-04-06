@@ -6,6 +6,7 @@ function dibujar() {
     let y1 = parseInt(document.getElementById("y1").value);
 
     bresenham(x0, y0, x1, y1);
+    dibujarEscala();
 }
 
 function plot(x, y) {
@@ -23,6 +24,16 @@ function bresenham(x0, y0, x1, y1) {
     let sy = (y0 < y1) ? 1 : -1;
 
     let err = dx - dy;
+    function dibujarEscala() {
+
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
+
+    for (let i = 0; i <= 400; i += 50) {
+        ctx.fillText(i, i, 395);
+        ctx.fillText(i, 0, 400 - i);
+    }
+}
 
     while (true) {
 
@@ -41,5 +52,9 @@ function bresenham(x0, y0, x1, y1) {
             err += dx;
             y0 += sy;
         }
+        let tabla = document.getElementById("tabla");
+
+        let fila = "<tr><td>" + x0 + "</td><td>" + y0 + "</td><td>" + err + "</td></tr>";
+        tabla.innerHTML += fila;
     }
 }
