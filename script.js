@@ -13,10 +13,9 @@ function plot(x, y) {
     let canvas = document.getElementById("canvas");
     let ctx = canvas.getContext("2d");
 
-    ctx.fillRect(x, y, 2, 2);
+    ctx.fillRect(x, 400-y, 3, 3); // aqui invertimos y para que nuestro origen quede en la esquina izquierda
 }
 function bresenham(x0, y0, x1, y1) {
-
     let dx = Math.abs(x1 - x0);
     let dy = Math.abs(y1 - y0);
 
@@ -24,20 +23,10 @@ function bresenham(x0, y0, x1, y1) {
     let sy = (y0 < y1) ? 1 : -1;
 
     let err = dx - dy;
-    function dibujarEscala() {
-
-    let canvas = document.getElementById("canvas");
-    let ctx = canvas.getContext("2d");
-
-    for (let i = 0; i <= 400; i += 50) {
-        ctx.fillText(i, i, 395);
-        ctx.fillText(i, 0, 400 - i);
-    }
-}
 
     while (true) {
 
-        console.log(x0, y0); // aún no dibuja
+        plot(x0, y0);
 
         if (x0 === x1 && y0 === y1) break;
 
@@ -57,4 +46,14 @@ function bresenham(x0, y0, x1, y1) {
         let fila = "<tr><td>" + x0 + "</td><td>" + y0 + "</td><td>" + err + "</td></tr>";
         tabla.innerHTML += fila;
     }
+    function dibujarEscala() {
+
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
+
+    for (let i = 0; i <= 400; i += 50) {
+        ctx.fillText(i, i, 395);
+        ctx.fillText(i, 0, 400 - i);
+    }
+}
 }
