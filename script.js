@@ -5,8 +5,9 @@ function dibujar() {
     let x1 = parseInt(document.getElementById("x1").value);
     let y1 = parseInt(document.getElementById("y1").value);
 
-    console.log(x0, y0, x1, y1);
+    bresenham(x0, y0, x1, y1);
 }
+
 function plot(x, y) {
     let canvas = document.getElementById("canvas");
     let ctx = canvas.getContext("2d");
