@@ -7,6 +7,12 @@ function dibujar() {
 
     console.log(x0, y0, x1, y1);
 }
+function plot(x, y) {
+    let canvas = document.getElementById("canvas");
+    let ctx = canvas.getContext("2d");
+
+    ctx.fillRect(x, y, 2, 2);
+}
 function bresenham(x0, y0, x1, y1) {
 
     let dx = Math.abs(x1 - x0);
